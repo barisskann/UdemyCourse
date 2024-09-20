@@ -8,8 +8,6 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 {
     public async Task<ServiceResult<CreateProductResponse>> CreateProductAsync(CreateProductRequest request)
     {
-        var x = new ServiceResult<CreateProductResponse>();
-        x?.ErrorMessage?.Select(x => new Product { Name = x });
         
         await productRepository.AddAsync(new Product { Id = request.Id, Name = request.Name, Price = request.Price, Stock = request.stock });
 
