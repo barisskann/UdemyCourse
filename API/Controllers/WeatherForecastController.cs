@@ -21,6 +21,18 @@ namespace API.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            var x = new object();
+
+
+            var obj = x switch
+            {
+                > 0 => DateTime.Now.ToString(),
+                WeatherForecast => DateTime.Now.ToString(),
+                object => DateTime.Now.ToString(),
+                _ => "Unknown temperature"  // Default case
+            };
+
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
