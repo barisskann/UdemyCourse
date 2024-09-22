@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories.Products;
-using System.Linq.Expressions;
 
 namespace Repositories.Extensions;
 
@@ -25,7 +24,7 @@ public static class RepositoryExtensions
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        List<Product> x = new List<Product>();
+
         return services;
     }
 }
